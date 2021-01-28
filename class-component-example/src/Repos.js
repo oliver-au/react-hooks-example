@@ -3,9 +3,13 @@ import { fetchRepos } from "./api.js";
 import Loading from "./Loading";
 
 class Repos extends Component {
-	state = {
-		repos: [],
-		Loading: true
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			repos: [],
+			Loading: true
+		}
 	}
 
 	componentDidMount() {
