@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import NthFib from './NthFib'
 import NthPrime from './NthPrime'
 
@@ -16,6 +16,14 @@ const Counter = () => {
 		setPrimeCount((count) => count + 10)
 	}
 
+	const incrementFib = useCallback(() => {
+		setFibCount((count) => count + 1)
+	}, [])
+
+	const incrementPrime = useCallback(() => {
+		setPrimeCount((count) => count + 1)
+	}, [])
+
 	return (
 		<>
 			<button onClick={add10}>Add 10</button>
@@ -23,12 +31,12 @@ const Counter = () => {
 			<hr />
 			<NthFib 
 				count={fibCount}
-				increment={() => setFibCount((count) => count + 1)}
+				increment={incrementFib}
 			/>
 			<hr />
 			<NthPrime 
 				count={primeCount}
-				increment={() => setPrimeCount((count) => count + 1)}
+				increment={incrementPrime}
 			/>
 		</>
 	)
